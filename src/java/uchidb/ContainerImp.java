@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Arrays;
 
 public class ContainerImp<T,S> implements Containers<T,S> {
-	public Map<S,T> map = initEmptyMap();
+	public Map<S,T> map = initEmptyMap(); // if I don't init here, sometimes instead of test failure I get a NullPointerException
 
 	public Set<T> initSet(T[] tArray) {
 		return new HashSet<T>(Arrays.asList(tArray));
