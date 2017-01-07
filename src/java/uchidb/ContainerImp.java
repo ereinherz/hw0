@@ -1,6 +1,7 @@
 package uchidb;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
@@ -8,14 +9,14 @@ import java.util.HashSet;
 import java.util.Arrays;
 
 public class ContainerImp<T,S> implements Containers<T,S> {
-	public Map<S,T> map;
+	public Map<S,T> map = initEmptyMap();
 
 	public Set<T> initSet(T[] tArray) {
 		return new HashSet<T>(Arrays.asList(tArray));
 	}
 
 	public List<T> initList(T[] tArray) {
-		return Arrays.asList(tArray);
+		return new ArrayList<T>(Arrays.asList(tArray));
 	}
 
 	public Map<S,T> initEmptyMap() {
@@ -23,7 +24,7 @@ public class ContainerImp<T,S> implements Containers<T,S> {
 	} 
 
 	public void storeMap(Map<S,T> mapToStoreInClass) {
-		map = mapToStoreInClass;
+		map = new HashMap<S,T>(mapToStoreInClass);
 	}
 
 	public boolean addToMap(S key, T value, boolean overwriteExistingKey) {
